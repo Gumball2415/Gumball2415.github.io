@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Da FriendZone - Home</title>
+		<link rel="stylesheet" type="text/css" href="FriendZone_resources/FriendZone stylesheet.css">
+		<link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Roboto+Mono" rel="stylesheet">
+		<link rel="icon" type="image/png" href="FriendZone_resources/icon 16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="FriendZone_resources/icon 32.png" sizes="32x32">
+		<style>
+			body {
+				color: white;
+			}
+			.main {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translateX(-50%) translateY(-50%);
+			}
+			.small {
+				font-size: 12px;
+			}
+			#chromeMessage {
+				visibility: hidden;
+			}
+		</style>
+		<script>
+			window.onload = function() {
+				var isChromium = window.chrome;
+				var winNav = window.navigator;
+				var vendorName = winNav.vendor;
+				var isOpera = typeof window.opr !== "undefined";
+				var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
+				var isIOSChrome = winNav.userAgent.match("CriOS");
+
+				if (isIOSChrome) {
+					// is Google Chrome on IOS
+				} else if(
+					isChromium !== null &&
+					typeof isChromium !== "undefined" &&
+					vendorName === "Google Inc." &&
+					isOpera === false &&
+					isIEedge === false
+				) {
+					document.getElementById('chromeMessage').style.visibility = 'visible'
+				} else { 
+				}
+			};
+		</script>
+	</head>
+<body class="main">
+	<center>
+		<font class="Major">click the logo to enter</font><br>
+		<a href="FriendZone_resources/Home.html">
+			<img class="MajorTom"src="FriendZone_resources/logo2.gif"><br>
+		</a>
+		<div class="small" id="chromeMessage">
+			warning: due to Chrome's autoplay policy, some functionalities may not work!<br>
+			to fix this, open chrome://flags/#autoplay-policy and set to "No user gesture is required."
+		</div>
+		<!--[if IE]>
+				hey! you're using Internet Explorer, aren't you? <br>
+				you're still able to browse this website, just that everything's broken now :(
+		<![endif]-->
+	</center>
+</body>
+</html>

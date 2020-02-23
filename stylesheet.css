@@ -13,84 +13,30 @@
 	--monohue: -16.5deg;
 	--monosat: 100%;
 	--monolum: 100%;
+	--width: 800px;
 }
+@font-face {
+  font-family: "Retro Gaming";
+  src: url("Retro Gaming.ttf");
+}
+/*@font-face {
+  font-family: "Windows Command Prompt";
+  src: url("windows_command_prompt.ttf");
+  }*/
 body {
-	background-color: black;
+	background: var(--bggray2);
 	color: white;
-	font-family: 'Roboto Mono', monospace;
+	font-family: 'Retro Gaming', monospace;
 	margin: 20px;
 	scroll-behavior: smooth;
 }
-button {
-	background-color: var(--palette1);
-	border: 2px solid var(--palette2);
-	font-family: 'Roboto Mono', monospace;
-	padding: 0px;
-	font-size: 1em;
-	color: white;
-	transition: 0.2s;
-}
-button:active {
-	background-color: black;
-	border: 2px solid var(--palette1);
-	font-family: 'Roboto Mono', monospace;
-	padding: 0px;
-	font-size: 1em;
-	color: var(--palette1);
-	transition: 0.2s;
-}
-input {
-	background-color: var(--palette1);
-	border: 2px solid var(--palette2);
-	font-family: 'Roboto Mono', monospace;
-	padding: 0px;
-	font-size: 1em;
-	color: white;
-	transition: 0.2s;
-}
-input:active  {
-	background-color: black;
-	border: 2px solid var(--palette1);
-	font-family: 'Roboto Mono', monospace;
-	padding: 0px;
-	font-size: 1em;
-	color: var(--palette1);
-	transition: 0.2s;
-}
-li {
-	padding: 5px;
-	transition: 0.5S;
-}
-li.active {
-	padding: 20px;
-	transition: 0.5S;
-}
-#canvas {
-	width: 500px;
-	height: 250px;
-}
-.bar-wrapper {
-	height: 300px;
-	position: relative;
-}
-.bar {
-	position: relative;
-	bottom: 0;
-	width: 5px;
-	display: inline-block;
-	border: 1px solid red;
-	height: 5px;
-	border-bottom: 3px solid #fff;
-}
-.logo {
-	filter: brightness(calc(var(--monolum) + 10%)) saturate(var(--monosat)) hue-rotate(var(--monohue));
-	transition: 0.5S;
+section {
+	width: 1200px;
 }
 header {
-	width: 720px;
-	font-family: 'Major Mono Display', monospace;
+	font-family: /*'Windows Command Prompt',*/ 'Retro Gaming', monospace;
 	background-color: var(--trans);
-	padding: 20px;
+	padding: 60px;
 }
 hr {
 	margin-top: 10px;
@@ -98,182 +44,42 @@ hr {
 footer {
 	background-color: var(--bggray1);
 	padding: 20px;
-	width: 720px;
 }
 article {
 	background-color: var(--bggray1);
 	padding: 20px;
 	padding-bottom: 0px;
-	width: 720px;
 	text-align: justify;
 }
-.Profile {
-	background-color: var(--bggray1);
+.left {
+	padding-bottom: 20px;
 	float: left;
-	width: 250px;
-	padding: 20px;
-	border: 3px solid var(--palette1);
-	margin-right: 10px;
-	margin-top: 24px;
-	margin-bottom: 20px;
-	transition: 0.5S;
-}
-.Profile:hover {
-	background-color: var(--bggray2);
-	float: left;
-	width: 250px;
-	border: 3px solid var(--palette3);
-	margin-right: 10px;
-	transition: 0.25S;
-}
-.image {
-	filter: sepia(100%) brightness(var(--monolum)) saturate(var(--monosat)) hue-rotate(calc(var(--monohue) - 38.37deg));
-	transition: 0.5S;
-}
-.Profile:hover .image {
-	filter: sepia(0%) brightness(100%) saturate(100%) hue-rotate(0deg);
-	transition: 0.25;
-}
-.Pic {
-	width: 250px;
-}
-.PicReal {
-	width: 250px;
-}
-.Profile .Pic {
-	position: absolute;
-	filter: invert(100%) opacity(100%);
-	transition: 0.5s;
-}
-.Profile:hover .Pic {
-	filter: invert(0%) opacity(0%);
-	transition: 0.25s;
-}
-.bio {
-	width: 720px;
-	height: 3.4em;
-	transition: 0.2s;
-	border: 0px;
-}
-.bio:hover {
-	width: 720px;
-	height: 144px;
-	transition: 0.5s;
-	border: 0px;
-}
-#audio {
-	border: 3px solid var(--palette3);
-    background: var(--bgblack);
-    width: 500px;
-    padding: 0px;
-    margin-top: 6px;
-	transition: 0.5S;
-}
-#playlist {
-	border: 3px solid var(--palette3);
-	background: url(static.gif) no-repeat center;
-    width: 500px;
-    padding: 0px;
-    margin: 0px;
-	list-style-type: none;
-	transition: 0.5S;
-}
-li.active .trax {
-	color: var(--palette3);
-	animation: playpulse 0.5s linear infinite;
-	animation-timing-function: ease;
-	transition: 0.5S;
-}
-@keyframes playpulse {
-	0% {
-		color: var(--palette3);
-	}
-	50% {
-		color: var(--palette1);
-	}
-	100% {
-		fcolor: var(--palette3);
-	}
-}
-.trax:link {
-	color: white;
-	background-color: transparent; 
-	text-decoration: none;
-}
-.trax:visited {
-  color: white;
-  background-color: transparent;
-  text-decoration: none;
-}
-.trax:hover {
-	color: var(--palette3);
-	background-color: transparent; 
-	text-decoration: none;
-	transition: 0.5S;
-}
-table {
-	border: 3px solid white;
-	margin-top: 20px;
-	width: 100%;
-	text-align: justify
-}
-td, th {
-	border: 2px solid gray;
-	padding; 8px;
-	text-align: justify;
-	
-}
-p {
-	color: white;
-	font-family: 'Roboto Mono', monospace;
-}
-.aragraph {
-	text-indent: 2.0em;  
+	width: 30%;
 }
 .Major {
 	margin: 0px;
 	text-align: center;
-	font-family: 'Major Mono Display', monospace;
+	font-family: /*'Windows Command Prompt',*/ 'Retro Gaming', monospace;
 	background-color: var(--bggray2);
 	color: white;
 }
 .MajorTom {
 	margin: 0px;
 	text-align: center;
-	font-family: 'Major Mono Display', monospace;
+	font-family: /*'Windows Command Prompt',*/ 'Retro Gaming', monospace;
 	color: white;
 }
 .Major:hover {
 	margin: 0px;
 	text-align: center;
-	font-family: 'Major Mono Display', monospace;
+	font-family: /*'Windows Command Prompt',*/ 'Retro Gaming', monospace;
 	color: white;
-    animation: pulse 0.5s linear infinite;
-	animation-timing-function: ease;
-}
-@keyframes pulselight {
-	0%, 100% {
-		filter: brightness(200%) saturate(calc(var(--monosat) + 200%));
-	}
-	50% {
-		filter: brightness(400%) saturate(calc(var(--monosat) + 400%));
-	}
 }
 .MajorTom:hover {
 	margin: 0px;
 	text-align: center;
-	font-family: 'Major Mono Display', monospace;
+	font-family: /*'Windows Command Prompt',*/ 'Retro Gaming', monospace;
 	color: white;
-    animation: pulselight 0.5s linear infinite;
-	animation-timing-function: ease;
-}
-@keyframes pulse {
-	0%, 100% {
-		filter: brightness(200%) sepia(100%) hue-rotate(calc(var(--monohue) - 38.71deg)) saturate(var(--monosat));
-	}
-	50% {
-		filter: brightness(400%) sepia(100%) hue-rotate(calc(var(--monohue) - 38.71deg)) saturate(var(--monosat));
-	}
 }
 .Center{
 	text-align: center;

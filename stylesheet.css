@@ -1,5 +1,5 @@
 :root {
-	--trans: rgba(0, 0, 0, 0)
+	--trans: rgba(0, 0, 0, 0);
 	--bgblack: rgba(0, 0, 0, 0.75);
 	--bggray1: #080808;
 	--bggray2: #121212;
@@ -34,16 +34,20 @@ section {
 	width: 1200px;
 }
 header {
-	font-family: /*'Windows Command Prompt',*/ 'Retro Gaming', monospace;
+	font-family: 'Retro Gaming', monospace;
 	background-color: var(--trans);
 	padding: 60px;
 }
 hr {
 	margin-top: 10px;
 }
+.content {
+	background-color: var(--bggray1);
+}
 footer {
 	background-color: var(--bggray1);
 	padding: 20px;
+	clear: both;
 }
 article {
 	background-color: var(--bggray1);
@@ -52,33 +56,38 @@ article {
 	text-align: justify;
 }
 .left {
-	padding-bottom: 20px;
 	float: left;
 	width: 30%;
+}
+ul {
+	list-style-type: none;
+}
+.navbutton {
+	/*put code here*/
 }
 .Major {
 	margin: 0px;
 	text-align: center;
-	font-family: /*'Windows Command Prompt',*/ 'Retro Gaming', monospace;
+	font-family: 'Retro Gaming', monospace;
 	background-color: var(--bggray2);
 	color: white;
 }
 .MajorTom {
 	margin: 0px;
 	text-align: center;
-	font-family: /*'Windows Command Prompt',*/ 'Retro Gaming', monospace;
+	font-family: 'Retro Gaming', monospace;
 	color: white;
 }
 .Major:hover {
 	margin: 0px;
 	text-align: center;
-	font-family: /*'Windows Command Prompt',*/ 'Retro Gaming', monospace;
+	font-family: 'Retro Gaming', monospace;
 	color: white;
 }
 .MajorTom:hover {
 	margin: 0px;
 	text-align: center;
-	font-family: /*'Windows Command Prompt',*/ 'Retro Gaming', monospace;
+	font-family: 'Retro Gaming', monospace;
 	color: white;
 }
 .Center{

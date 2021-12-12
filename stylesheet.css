@@ -16,14 +16,13 @@
 	--width: 800px;
 }
 @font-face {
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Source Code Pro', 'Courier New', monospace;
 }
-/*@font-face {
-  font-family: "Windows Command Prompt";
-  src: url("windows_command_prompt.ttf");
-  }*/
+@font-face {
+	font-family: "VT323", Lucida Console, monospace;
+	}
 body {
-	background: var(--bggray2);
+	background: var(--bggray2) url("glitch.png") fixed center;
 	color: white;
 	font-family: 'Source Code Pro', monospace;
 	margin: 20px;
@@ -67,26 +66,26 @@ ul {
 .Major {
 	margin: 0px;
 	text-align: center;
-	font-family: 'Source Code Pro', monospace;
+	font-family: 'VT323', monospace;
 	background-color: var(--bggray2);
 	color: white;
 }
 .MajorTom {
 	margin: 0px;
 	text-align: center;
-	font-family: 'Source Code Pro', monospace;
+	font-family: 'VT323', monospace;
 	color: white;
 }
 .Major:hover {
 	margin: 0px;
 	text-align: center;
-	font-family: 'Source Code Pro', monospace;
+	font-family: 'VT323', monospace;
 	color: white;
 }
 .MajorTom:hover {
 	margin: 0px;
 	text-align: center;
-	font-family: 'Source Code Pro', monospace;
+	font-family: 'VT323', monospace;
 	color: white;
 }
 .Center{

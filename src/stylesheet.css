@@ -57,6 +57,10 @@ article {
 	float: left;
 	width: 30%;
 }
+.Right {
+	float: right;
+	width: 70%;
+}
 .navbutton {
 	/*put code here*/
 }

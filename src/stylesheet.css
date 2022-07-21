@@ -16,15 +16,14 @@
 	--width: 800px;
 }
 @font-face {
-  font-family: 'Source Code Pro', 'Courier New', monospace;
+	font-family: "Fixedsys Excelsior 301";
+	src: url(../fonts/fsex300-webfont.ttf) format("truetype");
 }
-@font-face {
-	font-family: "VT323", Lucida Console, monospace;
-	}
 body {
 	background: var(--bggray2) url("glitch.png") fixed center;
 	color: white;
 	font-family: 'Source Code Pro', monospace;
+	font-size: 16px;
 	margin: 20px;
 	scroll-behavior: smooth;
 }
@@ -32,7 +31,8 @@ section {
 	width: 1200px;
 }
 header {
-	font-family: 'Source Code Pro', monospace;
+	font-family: "Fixedsys Excelsior 301";
+	font-size: 60px;
 	background-color: var(--trans);
 	padding: 60px;
 }
@@ -53,49 +53,46 @@ article {
 	padding-bottom: 0px;
 	text-align: justify;
 }
-.left {
+.Left {
 	float: left;
 	width: 30%;
 }
 ul {
 	list-style-type: none;
 }
-.navbutton {
-	/*put code here*/
-}
 .Major {
 	margin: 0px;
 	text-align: center;
-	font-family: 'VT323', monospace;
+	font-family: 'Fixedsys Excelsior 301', monospace;
 	background-color: var(--bggray2);
 	color: white;
 }
 .MajorTom {
 	margin: 0px;
 	text-align: center;
-	font-family: 'VT323', monospace;
+	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: white;
 }
 .Major:hover {
 	margin: 0px;
 	text-align: center;
-	font-family: 'VT323', monospace;
+	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: white;
 }
 .MajorTom:hover {
 	margin: 0px;
 	text-align: center;
-	font-family: 'VT323', monospace;
+	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: white;
 }
 .Center{
 	text-align: center;
 }
 @media (max-width: 600px) {
-  article {
-    width: 100%;
-    height: auto;
-  }
+	article {
+		width: 100%;
+		height: auto;
+	}
 }
 a:link {
   color: var(--palette1); 

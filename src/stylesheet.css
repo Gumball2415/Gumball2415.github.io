@@ -57,32 +57,29 @@ article {
 	float: left;
 	width: 30%;
 }
-ul {
-	list-style-type: none;
-}
 .navbutton {
 	/*put code here*/
 }
-.Major {
+.EmphasisTab {
 	margin: 0px;
 	text-align: center;
 	font-family: 'Fixedsys Excelsior 301', monospace;
 	background-color: var(--bggray2);
 	color: white;
 }
-.MajorTom {
+.EmphasisDiv {
 	margin: 0px;
 	text-align: center;
 	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: white;
 }
-.Major:hover {
+.EmphasisTab:hover {
 	margin: 0px;
 	text-align: center;
 	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: white;
 }
-.MajorTom:hover {
+.EmphasisDiv:hover {
 	margin: 0px;
 	text-align: center;
 	font-family: 'Fixedsys Excelsior 301', monospace;

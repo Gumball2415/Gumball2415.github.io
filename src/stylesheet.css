@@ -53,6 +53,9 @@ article {
 	padding-bottom: 0px;
 	text-align: justify;
 }
+.Center{
+	text-align: center;
+}
 .Left {
 	float: left;
 	width: 30%;
@@ -93,8 +96,8 @@ article {
 	color: white;
 	transition: 0.5S;
 }
-.Center{
-	text-align: center;
+.Indent {
+	margin-left: 20px;
 }
 @media (max-width: 600px) {
 	article {

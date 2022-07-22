@@ -74,6 +74,14 @@ a:active {
   text-decoration: underline;
   transition: 0.5S;
 }
+p {
+	text-indent: 2.5em;
+}
+ul {
+	margin: 0px;
+	text-align: left;
+	list-style-type: "- "
+}
 .Content {
 	background-color: var(--bggray1);
 }
@@ -88,6 +96,10 @@ a:active {
 	float: right;
 	width: 70%;
 }
+.Middle {
+	float: center;
+	width: 50%;
+}
 .navbutton {
 	/*put code here*/
 }
@@ -95,6 +107,7 @@ a:active {
 	margin: 0px;
 	text-align: center;
 	font-family: 'Fixedsys Excelsior 301', monospace;
+	font-size: 20px;
 	background-color: var(--bggray2);
 	color: var(--palette1);
 	transition: 0.5S;
@@ -119,11 +132,6 @@ a:active {
 	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: white;
 	transition: 0.5S;
-}
-ul {
-	margin: 0px;
-	text-align: left;
-	list-style-type: "- "
 }
 @media (max-width: 600px) {
 	article {

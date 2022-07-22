@@ -39,9 +39,6 @@ header {
 hr {
 	margin-top: 10px;
 }
-.content {
-	background-color: var(--bggray1);
-}
 footer {
 	background-color: var(--bggray1);
 	padding: 20px;
@@ -52,6 +49,33 @@ article {
 	padding: 20px;
 	padding-bottom: 0px;
 	text-align: justify;
+}
+a:link {
+  color: var(--palette1);
+  background-color: transparent;
+  text-decoration: none;
+  transition: 0.5S;
+}
+a:visited {
+  color: var(--palette2);
+  background-color: transparent;
+  text-decoration: none;
+  transition: 0.5S;
+}
+a:hover {
+  color: var(--palette3);
+  background-color: transparent;
+  text-decoration: underline;
+  transition: 0.5S;
+}
+a:active {
+  color: var(--palette4);
+  background-color: transparent;
+  text-decoration: underline;
+  transition: 0.5S;
+}
+.Content {
+	background-color: var(--bggray1);
 }
 .Center{
 	text-align: center;
@@ -82,50 +106,28 @@ article {
 	color: white;
 	transition: 0.5S;
 }
-.EmphasisDiv {
+.EmphasisText {
 	margin: 0px;
 	text-align: center;
 	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: var(--palette1);
 	transition: 0.5S;
 }
-.EmphasisDiv:hover {
+.EmphasisText:hover {
 	margin: 0px;
 	text-align: center;
 	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: white;
 	transition: 0.5S;
 }
-.Indent {
-	margin-left: 20px;
+ul {
+	margin: 0px;
+	text-align: left;
+	list-style-type: "- "
 }
 @media (max-width: 600px) {
 	article {
 		width: 100%;
 		height: auto;
 	}
-}
-a:link {
-  color: var(--palette1);
-  background-color: transparent;
-  text-decoration: none;
-  transition: 0.5S;
-}
-a:visited {
-  color: var(--palette2);
-  background-color: transparent;
-  text-decoration: none;
-  transition: 0.5S;
-}
-a:hover {
-  color: var(--palette3);
-  background-color: transparent;
-  text-decoration: underline;
-  transition: 0.5S;
-}
-a:active {
-  color: var(--palette4);
-  background-color: transparent;
-  text-decoration: underline;
-  transition: 0.5S;
 }

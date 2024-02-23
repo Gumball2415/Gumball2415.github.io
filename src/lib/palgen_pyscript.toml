@@ -1,0 +1,3 @@
+packages = ["colour-science", "matplotlib"]
+[files]
+"./palgen-persune/palgen_persune.py" = "./palgen_persune.py"

@@ -1,3 +1,6 @@
 [submodule "src/palgen/palgen-persune"]
 	path = src/palgen/palgen-persune
 	url = https://github.com/Gumball2415/palgen-persune.git
+[submodule "src/lib/palgen-persune"]
+	path = src/lib/palgen-persune
+	url = https://github.com/Gumball2415/palgen-persune.git

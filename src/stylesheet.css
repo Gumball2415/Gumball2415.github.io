@@ -115,7 +115,6 @@ ul {
 .EmphasisTab:hover {
 	margin: 0px;
 	text-align: center;
-	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: white;
 	transition: 0.5S;
 }
@@ -129,7 +128,6 @@ ul {
 .EmphasisText:hover {
 	margin: 0px;
 	text-align: center;
-	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: white;
 	transition: 0.5S;
 }

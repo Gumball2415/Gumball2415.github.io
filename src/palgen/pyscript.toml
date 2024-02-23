@@ -1,3 +1,0 @@
-packages = ["colour-science", "matplotlib" ]
-[files]
-"https://raw.githubusercontent.com/Gumball2415/palgen-persune/main/palgen-persune.py" = "./palgen_persune.py"

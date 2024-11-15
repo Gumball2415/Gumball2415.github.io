@@ -30,38 +30,66 @@
 						<div class="EmphasisTab">
 							special thanks
 						</div>
-						<br />
-						<div class="Center" id="splash">tranquil stillness comes after sorrow</div>
-						<br />
-						in no particular order:
-						<ul>
+						<p>
+							i am grateful for these entities, for having intersected with my life.
+						</p>
+							in no particular order:
+						<ul id="thankyou">
+							<li>Sargent</li>
+
 							<li id="ILoveYouTillIDie">Shika K. Rikka</li>
-							<li>Emma Essex</li>
+
+							<li>Em Essex</li>
+							<li>Tatsuro Yamashita</li>
+							<li>Paul McCartney and the Beatles</li>
+							<li>Queen</li>
+							<li>Tears for Fears</li>
+							<li>Tally Hall et al.</li>
+							<li>System of a Down</li>
+							<li>Robert Fripp</li>
+
 							<li>Marcy Z</li>
 							<li>Shibby</li>
+
 							<li>nyanpasu64</li>
-							<li>Sargent</li>
 							<li>Lumigado</li>
-							<li>Kagamiin (Hibiki)</li>
+							<li>Kagamiin~</li>
 							<li>euly</li>
+							<li>CynderQuill</li>
+							<li>AshyPie</li>
+							<li>Leafuw</li>
+							<li>Dania Rifki (Kaleidosium)</li>
+
 							<li>enid</li>
 							<li>Mai Lawton</li>
-							<li>Dania Rifki (Kaleidosium)</li>
+
+							<li>transkatgirl</li>
+							<li>lila</li>
+
+							<li>Cobalt Teal</li>
 							<li>forple</li>
-							<li>yoeynsf</li>
+							<li>provolonecinco</li>
+							<li>CHARUPOPU</li>
 							<li>Lockster</li>
 							<li>hEYDON</li>
 							<li>_aitchFactor</li>
 							<li>Trirosmos</li>
 							<li>Baph</li>
-							<li>zeta0134</li>
 							<li>Kasumi</li>
+
+							<li>Zeta</li>
 							<li>Arya</li>
-							<li>Zoey</li>
 							<li>plgDavid</li>
+							<li>Zoey K Lavender</li>
+
+							<li>ted.mielczarek</li>
+							<li>fluffy.critter</li>
+							<li>eevee</li>
 							<li>org</li>
 							<li>Finny (grievre/arreffem)</li>
+							<li>GuidoAnchovy</li>
 							<li>Iyatemu</li>
+							<li>UsagiK</li>
 							<li>lidnariq</li>
 							<li>Fiskbit</li>
 							<li>PinoBatch</li>
@@ -74,14 +102,15 @@
 							<li>Perkka</li>
 							<li>infiniteneslives</li>
 							<li>Sour</li>
-							<li>blargg</li>
-							<li>bisqwit</li>
 							<li>jroweboy</li>
-							<li>Quietust</li>
+							<li>bisqwit</li>
 							<li>Artemio</li>
 							<li>khmr33</li>
 							<li>yaros</li>
 							<li>forkram</li>
+							<li>blargg</li>
+							<li>Quietust</li>
+							<li>Tito Joey</li>
 						</ul>
 					</article>
 				</div>
@@ -100,18 +129,12 @@
 	</center>
 
 	<script type="text/javascript">
-		var randomtxt = [
-			"i owe you a lot",
-			"i don't say it enough",
-			"you uplift me",
-			"my benefactors",
-			"thank you for helping me"
-			];
-		function randomtext() {
-			return randomtxt[Math.floor((Math.random() * 5.00))];
+		//https://stackoverflow.com/a/11972692
+		var starstuff = document.getElementById("thankyou");
+		for (var i = starstuff.children.length; i >= 0; i--) {
+			starstuff.appendChild(starstuff.children[Math.random() * i | 0]);
 		}
 		function changeText() {
-			document.getElementById("splash").textContent = randomtext();
 			
 			// Queen - Save Me
 			document.getElementById("ILoveYouTillIDie").textContent = "🦌";

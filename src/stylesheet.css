@@ -28,7 +28,7 @@ body {
 	scroll-behavior: smooth;
 }
 section {
-	width: 1200px;
+	width: min(80vw, 1200px);
 }
 header {
 	font-family: "Fixedsys Excelsior 301", monospace;
@@ -50,29 +50,23 @@ article {
 	padding-bottom: 0px;
 	text-align: justify;
 }
+a {
+	background-color: transparent;
+	text-decoration: none;
+	transition: color 0.5S;
+}
 a:link {
-  color: var(--palette1);
-  background-color: transparent;
-  text-decoration: none;
-  transition: 0.5S;
+	color: var(--palette1);
 }
 a:visited {
-  color: var(--palette2);
-  background-color: transparent;
-  text-decoration: none;
-  transition: 0.5S;
+	color: var(--palette2);
 }
 a:hover {
-  color: var(--palette3);
-  background-color: transparent;
-  text-decoration: underline;
-  transition: 0.5S;
+	color: white;
 }
 a:active {
-  color: var(--palette4);
-  background-color: transparent;
-  text-decoration: underline;
-  transition: 0.5S;
+	color: var(--palette3);
+	transition: color 0S;
 }
 p {
 	text-indent: 2.5em;
@@ -110,26 +104,20 @@ ul {
 	font-size: 20px;
 	background-color: var(--bggray2);
 	color: var(--palette1);
-	transition: 0.5S;
+	transition: color 0.5S;
 }
 .EmphasisTab:hover {
-	margin: 0px;
-	text-align: center;
 	color: white;
-	transition: 0.5S;
 }
 .EmphasisText {
 	margin: 0px;
 	text-align: center;
 	font-family: 'Fixedsys Excelsior 301', monospace;
 	color: var(--palette1);
-	transition: 0.5S;
+	transition: color 0S 0.5S;
 }
 .EmphasisText:hover {
-	margin: 0px;
-	text-align: center;
 	color: white;
-	transition: 0.5S;
 }
 @media (max-width: 600px) {
 	article {

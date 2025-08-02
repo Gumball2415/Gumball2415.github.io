@@ -1,34 +1,13 @@
-/* interface for palgen_persune
- * Copyright (C) 2024 Persune
- * uses some UI code from PalGen, Copyright (C) 2018 DragWx <https://github.com/DragWx>
- * 
- * license for palgen_persune:
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this
- * software and associated documentation files (the "Software"), to deal in the Software
- * without restriction, including without limitation the rights to use, copy, modify,
- * merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
- * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+/* interface for Pally
+ * Copyright (C) 2025 Persune
+ * under the MIT license.
  *
- *
- *
- * license for palgen.js by DragWx:
+ * Based on UI code from PalGen,
  * Copyright (C) 2018 DragWx <https://github.com/DragWx>
- *
- * Permission to use, copy, modify, and/or distribute this software for any
- * purpose with or without fee is hereby granted, provided that the above
- * copyright notice and this permission notice appear in all copies.
- * 
- * This software is provided 'as-is', without any express or implied warranty.
- * In no event will the author(s) be held liable for any damages arising from
- * the use of this software.
+ * under the MIT license.
  ****/
+
+import init, { generate_palette } from "./pkg/pally_web.js";
 
 var palette = [];	// DOM element + metadata for each entry in the palette
 var appwindow;      // DOM element for the app's container
@@ -40,7 +19,7 @@ window.onload = init_window;
 function init_window() {
     // Get the DOM element for the app's container.
     appwindow = document.getElementById('app');
-    
+
     // Create the palette display by using a bunch of DIV elements.
     var palettetable = document.createElement('div');
     palettetable.style.width = "100%";
@@ -49,22 +28,22 @@ function init_window() {
     palettetable.style.fontSize = "8pt";
     palettetable.style.fontWeight = "bold";
     palettetable.style.border = "2px solid var(--palette1)";
-    
+
     // Create four rows.
     for (var lum = 0; lum < 4; lum++) {
         var newRow = document.createElement('div');
-        newRow.style.height = (100/4) + "%";
-        
+        newRow.style.height = (100 / 4) + "%";
+
         // For each row, create 16 cells.
         for (var hue = 0; hue < 16; hue++) {
             var paletteEntry = document.createElement('div');
             var paletteIndex = hue + (lum * 16);
             palette[paletteIndex] = paletteEntry;
             paletteEntry.style.display = "inline-block";
-            paletteEntry.style.width = (100/16) + "%";
+            paletteEntry.style.width = (100 / 16) + "%";
             paletteEntry.style.height = "100%";
             paletteEntry.style.background = "#000";
-            paletteEntry.style.color = "#FFF";
+            paletteEntry.style.color = "black";
             if (paletteIndexTextVisible) {
                 paletteEntry.style.textAlign = "left";
                 paletteEntry.textContent = "$" + paletteIndex.toString(16).padStart(2, '0');
@@ -98,19 +77,19 @@ function init_window() {
         childPane.appendChild(childTemp);
         currPane.appendChild(childPane);
 
-        // Macro for creating a PPU type option.
-        var newPPUOption = function (pane, value, selected, title) {
+        // Macro for creating a radio input.
+        var newRadioOption = function (pane, groupName, value, selected, title) {
             var radio = document.createElement('input');
             radio.type = "radio";
-            radio.name = "ppuType";
-            radio.id = "ppuType" + "" + value;
+            radio.name = groupName;
+            radio.id = groupName + value;
             radio.value = value;
             if (selected === true)
                 radio.checked = "checked";
             radio.onclick = generatePalette;
             pane.appendChild(radio);
             var label = document.createElement('label');
-            label.id = "ppuType";
+            label.id = groupName;
             label.innerHTML = value;
             label.htmlFor = radio.id;
             label.title = title;
@@ -118,39 +97,39 @@ function init_window() {
         }
 
         // must match mapping in palgen_persune!
-        newPPUOption(childPane, "2C02", true,
+        newRadioOption(childPane, "ppuType", "2C02", true,
             "RP2C02, NTSC composite PPU");
 
         childPane.appendChild(document.createElement('br'));
-        newPPUOption(childPane, "2C03", false,
+        newRadioOption(childPane, "ppuType", "2C03", false,
             "RP2C03, RGB video PPU");
 
         childPane.appendChild(document.createElement('br'));
-        newPPUOption(childPane, "2C04-0000", false,
+        newRadioOption(childPane, "ppuType", "2C04-0000", false,
             "RP2C04-0000, Scrambled palette RGB video PPU");
 
         childPane.appendChild(document.createElement('br'));
-        newPPUOption(childPane, "2C04-0001", false,
+        newRadioOption(childPane, "ppuType", "2C04-0001", false,
             "RP2C04-0001, Scrambled palette RGB video PPU");
 
         childPane.appendChild(document.createElement('br'));
-        newPPUOption(childPane, "2C04-0002", false,
+        newRadioOption(childPane, "ppuType", "2C04-0002", false,
             "RP2C04-0002, Scrambled palette RGB video PPU");
 
         childPane.appendChild(document.createElement('br'));
-        newPPUOption(childPane, "2C04-0003", false,
+        newRadioOption(childPane, "ppuType", "2C04-0003", false,
             "RP2C04-0003, Scrambled palette RGB video PPU");
 
         childPane.appendChild(document.createElement('br'));
-        newPPUOption(childPane, "2C04-0004", false,
+        newRadioOption(childPane, "ppuType", "2C04-0004", false,
             "RP2C04-0004, Scrambled palette RGB video PPU");
 
         childPane.appendChild(document.createElement('br'));
-        newPPUOption(childPane, "2C05-99", false,
+        newRadioOption(childPane, "ppuType", "2C05-99", false,
             "RC2C05-99, RGB video PPU (with Famicom Titler composite encoder)");
 
         childPane.appendChild(document.createElement('br'));
-        newPPUOption(childPane, "2C07", false,
+        newRadioOption(childPane, "ppuType", "2C07", false,
             "RP2C07, PAL-B composite video PPU");
 
         // Normalize
@@ -171,43 +150,24 @@ function init_window() {
         childPane.appendChild(childTemp);
         currPane.appendChild(childPane);
 
-        // Macro for creating a normalize method option.
-        var newNormalizeOption = function (pane, value, selected, title) {
-            var radio = document.createElement('input');
-            radio.type = "radio";
-            radio.name = "normalizeMethod";
-            radio.id = "normalizeMethod" + "" + value;
-            radio.value = value;
-            if (selected === true)
-                radio.checked = "checked";
-            radio.onclick = generatePalette;
-            radio.disabled = true
-            pane.appendChild(radio);
-            var label = document.createElement('label');
-            label.id = "normalizeMethod";
-            label.innerHTML = value;
-            label.htmlFor = radio.id;
-            label.title = title;
-            pane.appendChild(label);
-        }
-        
 
-        // must match mapping in palgen_persune!
-        newNormalizeOption(childPane, "Scale", true,
+        // must match mapping in pally!
+        newRadioOption(childPane, "normalizeMethod", "Scale", true,
             "Scales values within 0-1");
 
         childPane.appendChild(document.createElement('br'));
-        newNormalizeOption(childPane, "Scale+Clip negative", false,
+        newRadioOption(childPane, "normalizeMethod", "ScaleClipNegative", false,
             "Clips negative values to 0, then scales values within 0-1");
 
         document.paletteTweaks.enableNormalizeMethod.addEventListener(
             "change",
             (event) => {
                 document.getElementById("normalizeMethodScale").disabled = !event.target.checked;
-                document.getElementById("normalizeMethodScale+Clip negative").disabled = !event.target.checked;
+                document.getElementById("normalizeMethodScaleClipNegative").disabled = !event.target.checked;
             },
             false,
         );
+        document.paletteTweaks.enableNormalizeMethod.onchange = generatePalette;
 
         // Clip
         childPane = document.createElement('fieldset');
@@ -227,33 +187,13 @@ function init_window() {
         childPane.appendChild(childTemp);
         currPane.appendChild(childPane);
 
-        // Macro for creating a normalize method option.
-        var newClipeOption = function (pane, value, selected, title) {
-            var radio = document.createElement('input');
-            radio.type = "radio";
-            radio.name = "clipMethod";
-            radio.id = "clipMethod" + "" + value;
-            radio.value = value;
-            if (selected === true)
-                radio.checked = "checked";
-            radio.onclick = generatePalette;
-            radio.disabled = true
-            pane.appendChild(radio);
-            var label = document.createElement('label');
-            label.id = "clipMethod";
-            label.innerHTML = value;
-            label.htmlFor = radio.id;
-            label.title = title;
-            pane.appendChild(label);
-        }
-        
 
         // must match mapping in palgen_persune!
-        newClipeOption(childPane, "Darken", true,
+        newRadioOption(childPane, "clipMethod", "Darken", true,
             "If any channels are out of range, the color is darkened until it is completely in range. Algorithm by DragWx.");
 
         childPane.appendChild(document.createElement('br'));
-        newClipeOption(childPane, "Desaturate", false,
+        newRadioOption(childPane, "clipMethod", "Desaturate", false,
             "If any channels are out of range, the color is desaturated towards its luminance. Algorithm by DragWx.");
 
         document.paletteTweaks.enableClipMethod.addEventListener(
@@ -264,6 +204,7 @@ function init_window() {
             },
             false,
         );
+        document.paletteTweaks.enableClipMethod.onchange = generatePalette;
     }
 
     // color decoding options
@@ -280,30 +221,25 @@ function init_window() {
     currPane.appendChild(makeFancyRangeBox("con"));
     currPane.appendChild(document.createTextNode("Contrast"));
     currPane.appendChild(document.createElement("br"));
-    
+
     currPane.appendChild(makeFancyRangeBox("hue"));
     currPane.appendChild(document.createTextNode("Hue"));
     currPane.appendChild(document.createElement("br"));
-    
+
     currPane.appendChild(makeFancyRangeBox("sat"));
     currPane.appendChild(document.createTextNode("Saturation"));
     currPane.appendChild(document.createElement("br"));
 
+    currPane.appendChild(makeFancyRangeBox("gai"));
+    currPane.appendChild(document.createTextNode("Gain"));
+    currPane.appendChild(document.createElement("br"));
+
     currPane.appendChild(makeFancyRangeBox("blp"));
-    currPane.appendChild(document.createTextNode("Black point"));
+    currPane.appendChild(document.createTextNode("Black point (IRE)"));
     currPane.appendChild(document.createElement("br"));
 
     currPane.appendChild(makeFancyRangeBox("whp"));
-    currPane.appendChild(document.createTextNode("White point"));
-    currPane.appendChild(document.createElement("br"));
-
-    currPane.appendChild(makeFancyRangeBox("gai"));
-    currPane.appendChild(document.createTextNode("Gain"));
-    document.paletteTweaks.bri.value = "0.0";
-    document.paletteTweaks.con.value = "1.0";
-    document.paletteTweaks.hue.value = "0.0";
-    document.paletteTweaks.sat.value = "1.0";
-    document.paletteTweaks.gai.value = "0.0";
+    currPane.appendChild(document.createTextNode("White point (IRE)"));
 
     // analog effects options
     currPane = document.createElement('fieldset');
@@ -312,37 +248,117 @@ function init_window() {
     currPane.appendChild(temp);
     document.paletteTweaks.appendChild(currPane);
 
-    currPane.appendChild(makeFancyRangeBox("phs"));
-    currPane.appendChild(document.createTextNode("Phase skew"));
+    currPane.appendChild(makeFancyRangeBox("phd"));
+    currPane.appendChild(document.createTextNode("Differential phase distortion"));
     currPane.appendChild(document.createElement("br"));
 
     currPane.appendChild(makeFancyRangeBox("aps"));
     currPane.appendChild(document.createTextNode("Anti-emphasis phase skew"));
     currPane.appendChild(document.createElement("br"));
-    
+
     currPane.appendChild(makeFancyRangeBox("ela"));
     currPane.appendChild(document.createTextNode("Emphasis luma attenuation"));
 
     // default:
-    document.paletteTweaks.phs.value = "0.0";
+    document.paletteTweaks.bri.value = "0.0";
+    document.paletteTweaks.con.value = "1.0";
+    document.paletteTweaks.hue.value = "0.0";
+    document.paletteTweaks.sat.value = "1.0";
+    document.paletteTweaks.gai.value = "0.0";
+    document.paletteTweaks.phd.value = "4.0";
     document.paletteTweaks.aps.value = "0.0";
     document.paletteTweaks.ela.value = "0.0";
+    document.paletteTweaks.blp.value = "0.0";
+    document.paletteTweaks.whp.value = "100.0";
     // Apply this after the defaults to prevent spurious calls.
     document.paletteTweaks.hue.onchange = generatePalette;
     document.paletteTweaks.sat.onchange = generatePalette;
     document.paletteTweaks.bri.onchange = generatePalette;
     document.paletteTweaks.con.onchange = generatePalette;
-    document.paletteTweaks.blp.onchange = generatePalette;
-    document.paletteTweaks.whp.onchange = generatePalette;
     document.paletteTweaks.gai.onchange = generatePalette;
-    document.paletteTweaks.phs.onchange = generatePalette;
+    document.paletteTweaks.phd.onchange = generatePalette;
     document.paletteTweaks.aps.onchange = generatePalette;
     document.paletteTweaks.ela.onchange = generatePalette;
-    
+    document.paletteTweaks.blp.onchange = generatePalette;
+    document.paletteTweaks.whp.onchange = generatePalette;
+
+
+
+    // Palette options
+    currPane = document.createElement('fieldset');
+    temp = document.createElement('legend');
+    temp.innerHTML = "Palette options";
+    currPane.appendChild(temp);
+    document.paletteTweaks.appendChild(currPane);
+
+
+    // Red emphasis
+    childTemp = document.createElement('input');
+    childTemp.type = "checkbox";
+    childTemp.id = "viewRedEmphasis";
+    currPane.appendChild(childTemp);
+    childTemp = document.createElement("label");
+    childTemp.innerHTML = "Enable R emphasis";
+    childTemp.htmlFor = "viewRedEmphasis";
+    currPane.appendChild(childTemp);
+
+    // Green emphasis
+    currPane.appendChild(document.createElement("br"));
+    childTemp = document.createElement('input');
+    childTemp.type = "checkbox";
+    childTemp.id = "viewGreenEmphasis";
+    currPane.appendChild(childTemp);
+    childTemp = document.createElement("label");
+    childTemp.innerHTML = "Enable G emphasis";
+    childTemp.htmlFor = "viewGreenEmphasis";
+    currPane.appendChild(childTemp);
+
+    // Blue emphasis
+    currPane.appendChild(document.createElement("br"));
+    childTemp = document.createElement('input');
+    childTemp.type = "checkbox";
+    childTemp.id = "viewBlueEmphasis";
+    currPane.appendChild(childTemp);
+    childTemp = document.createElement("label");
+    childTemp.innerHTML = "Enable B emphasis";
+    childTemp.htmlFor = "viewBlueEmphasis";
+    currPane.appendChild(childTemp);
+
+    // Blue emphasis
+    currPane.appendChild(document.createElement("br"));
+    childTemp = document.createElement('input');
+    childTemp.type = "checkbox";
+    childTemp.id = "saveEmphasis";
+    currPane.appendChild(childTemp);
+    childTemp = document.createElement("label");
+    childTemp.innerHTML = "Save emphasis entires";
+    childTemp.htmlFor = "saveEmphasis";
+    currPane.appendChild(childTemp);
+
+    document.paletteTweaks.viewRedEmphasis.onchange = generatePalette;
+    document.paletteTweaks.viewGreenEmphasis.onchange = generatePalette;
+    document.paletteTweaks.viewBlueEmphasis.onchange = generatePalette;
+    document.paletteTweaks.saveEmphasis.onchange = generatePalette;
+
     // colorimetry options
     // colorimetry reference RGB and whitepoint primaries
     // colorimetry display RGB and whitepoint primaries
+    appwindow.appendChild(document.createElement('br'));
+    saveLink = document.createElement('a');
+    saveLink.style.display = "none";
+    //saveLink.innerHTML = "[Save palette...]";
+    saveLink.href = "";
+    saveLink.download = "pally.pal";
+    appwindow.appendChild(saveLink);
 
+    temp = document.createElement("button");
+    temp.innerHTML = "Save palette..."
+    temp.onclick = function () {
+        saveLink.click();
+    };
+    appwindow.appendChild(temp);
+
+    generatePalette();
 }
 
 // Create an input box with [-] and [+] buttons.
@@ -353,7 +369,7 @@ function makeFancyRangeBox(name, buttonStep) {
     var temp = document.createElement('div');
     temp.style.display = "inline-flex";
     temp.style.flexDirection = "row";
-    
+
     var valueBox = document.createElement('input');
     valueBox.type = "number";
     valueBox.id = name;
@@ -365,7 +381,7 @@ function makeFancyRangeBox(name, buttonStep) {
     var minusButton = document.createElement('input');
     minusButton.type = "button";
     minusButton.value = "-";
-    minusButton.onclick = function() {
+    minusButton.onclick = function () {
         valueBox.value = (Math.round(parseFloat(valueBox.value) * 1000) - buttonStep) / 1000;
         valueBox.onchange();
     }
@@ -374,7 +390,7 @@ function makeFancyRangeBox(name, buttonStep) {
     var plusButton = document.createElement('input');
     plusButton.type = "button";
     plusButton.value = "+";
-    plusButton.onclick = function() {
+    plusButton.onclick = function () {
         valueBox.value = (Math.round(parseFloat(valueBox.value) * 1000) + buttonStep) / 1000;
         valueBox.onchange();
     }
@@ -386,6 +402,141 @@ function makeFancyRangeBox(name, buttonStep) {
     return temp;
 }
 
-function generatePalette() {
-    // trigger palette generation
+function toColorHex(i) {
+    if (i < 16)
+        i = "0" + i.toString(16);
+    else
+        i = i.toString(16);
+    return i;
+}
+
+async function generatePalette() {
+    const settings = document.paletteTweaks;
+    var renderEmphasis = settings.saveEmphasis.checked
+        || settings.viewRedEmphasis.checked
+        || settings.viewGreenEmphasis.checked
+        || settings.viewBlueEmphasis.checked;
+
+    var emphasisIndex = (settings.viewRedEmphasis.checked
+        | settings.viewGreenEmphasis.checked << 1
+        | settings.viewBlueEmphasis.checked << 2) * 64 * 3;
+
+    var saveEmphIndex = emphasisIndex;
+    var paletteSize = 64 * 3;
+    if (settings.saveEmphasis.checked) {
+        saveEmphIndex = 0;
+        paletteSize *= 8;
+    }
+
+    var clip;
+    if (settings.enableClipMethod.checked) {
+        for (i = 0; i < settings.clipMethod.length; i++) {
+            if (settings.clipMethod[i].checked) {
+                clip = settings.clipMethod[i].value;
+                break;
+            }
+        }
+    } else {
+        clip = "";
+    }
+
+    var normalize;
+    if (settings.enableNormalizeMethod.checked) {
+        for (i = 0; i < settings.normalizeMethod.length; i++) {
+            if (settings.normalizeMethod[i].checked) {
+                normalize = settings.normalizeMethod[i].value;
+                break;
+            }
+        }
+    }
+    else {
+        normalize = "";
+    }
+
+    var blackPoint = settings.blp.value;
+    if (blackPoint === "") { blackPoint = null; }
+    else { blackPoint = parseFloat(blackPoint) }
+    var whitePoint = settings.whp.value;
+    if (whitePoint === "") { whitePoint = null; }
+    else { whitePoint = parseFloat(whitePoint) }
+
+    var brightness = parseFloat(settings.bri.value);
+    var contrast = parseFloat(settings.con.value);
+    var hue = parseFloat(settings.hue.value);
+    var saturation = parseFloat(settings.sat.value);
+    var gain = parseFloat(settings.gai.value);
+    var gamma = null; //parseFloat(settings.gamma.value)
+    var ppu;
+
+    for (var i = 0; i < settings.ppuType.length; i++) {
+        if (settings.ppuType[i].checked) {
+            ppu = settings.ppuType[i].value;
+            break;
+        }
+    }
+
+    var phaseDistortion = parseFloat(settings.phd.value);
+
+    var textEnable = false;
+    // if (settings.showtext.checked) textEnable = true;
+
+    await init();
+    const outbuf = generate_palette(
+        renderEmphasis,
+        clip,
+        normalize,
+        blackPoint,
+        whitePoint,
+        brightness,
+        contrast,
+        hue,
+        saturation,
+        gain,
+        gamma,
+        ppu,
+        phaseDistortion
+    );
+
+    // Build the binary version of the palette for download
+
+    var binPal = "";
+    var j = 0;
+    for (var i = 0; i < paletteSize; i) {
+        var r = outbuf[saveEmphIndex + i++];
+        var g = outbuf[saveEmphIndex + i++];
+        var b = outbuf[saveEmphIndex + i++];
+
+        r = toColorHex(r);
+        g = toColorHex(g);
+        b = toColorHex(b);
+
+        binPal += "%" + r;
+        binPal += "%" + g;
+        binPal += "%" + b;
+    }
+    // As well as the preview
+    var j = 0;
+    for (var i = 0; i < 64 * 3; i) {
+        var r = outbuf[emphasisIndex + i++];
+        var g = outbuf[emphasisIndex + i++];
+        var b = outbuf[emphasisIndex + i++];
+
+        var lum = r * 299 + g * 587 + b * 114;
+
+        r = toColorHex(r);
+        g = toColorHex(g);
+        b = toColorHex(b);
+
+        var textColor = "#FFFFFF";
+
+        if (lum > 127500) {
+            palette[j].style.color = "black";
+        }
+        else {
+            palette[j].style.color = "white";
+        }
+
+        palette[j++].style.background = "#" + r + g + b;
+    }
+    saveLink.href = "data:application/octet-stream," + binPal;
 }

@@ -1,0 +1,24 @@
+{
+  "name": "pally-web",
+  "type": "module",
+  "collaborators": [
+    "Persune <gumball2415@gmail.com>"
+  ],
+  "description": "WASM JS interface for Pally.",
+  "version": "0.1.0",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gumball2415/pally"
+  },
+  "files": [
+    "pally_web_bg.wasm",
+    "pally_web.js",
+    "pally_web.d.ts"
+  ],
+  "main": "pally_web.js",
+  "types": "pally_web.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
